@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat Hub</title>
+    <link href="/give_help/css/styles.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.jpg" />
+    <script type="text/javascript" src="/give_help/js/vendors/modernizr/modernizr.custom.js"></script>
+    <style type="text/css">
+        /*.div-to-display {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid red;
+    background-color: #eee;
+    z-index: 10;
+  }
+  td {
+      position: relative;
+  }
+  td:hover > .div-to-display {
+      display: block
+  }*/
+
+        #menuLogin:hover {
+            background: #969fa1;
+        }
+
+        #menuLogin:hover>#profile_view {
+            display: block;
+
+        }
+
+        #menuLogin:hover {
+            background: #969fa1;
+        }
+
+        #menuLogin:hover>#profile_view {
+            display: block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!--Smooth Scroll-->
+    <div class="smooth-overflow wrapc">
+        <!--Navigation-->
+
+        <nav class="navbar navbar-inverse wrapc" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand text-blue" href="/home" style="padding:0;"><img style="max-width:100%;" src="/images/scotia-logo.png" alt=""></a> </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="menuLogin"> <a class="dropdown" href="#" id="navLogin">Micah Yancey <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <div class="dropdown-menu" id="profile_view" style="padding: 10px 20px; width: 200px;">
+                                <center>
+                                    <div class="main-info-menu">
+                                        <div class="user-img"><img src="/images/user1.jpg" alt="User Picture" /></div>
+                                        <!-- <h1>Micah Yancey </h1> -->
+                                        <p>Advisor</p>
+                                        <label class="input">
+                      <a class="btn btn-primary" href="/adv_profile">Profile</a>
+                      <a class="btn btn-default" href="/logout" onclick="logout();">Logout</a>
+                    </label>
+                                    </div>
+
+                                    <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                                    <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                                </center>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--/Sign In Form-->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!--/Navigation-->
+
+        <!--/Navigation-->
+
+        <!--MainWrapper-->
+        <div class="main-wrap wrapc">
+
+
+            <!--Main Menu-->
+            <div class="responsive-admin-menu">
+                <div class="responsive-menu">Scotia Bank Advice Hub
+                    <div class="menuicon"><i class="fa fa-angle-down"></i></div>
+                </div>
+                <ul id="menu">
+                    <li><a class="act_c" id="dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                    <!-- <li><a class="active" href="/give_help"><i class="fa fa-envelope"></i> Inbox</a></li> -->
+
+                    <li><a class="submenu" href="#" title="Inbox" id="down-menu"><i class="fa fa-envelope"></i><span> Inbox </span></a>
+                        <ul id="dash-sub-f" style="display: none;">
+                            <li><a id="conversation"><i class="fa fa-envelope"></i> Conversations</a></li>
+                            <li><a href="#"><i class="fa fa-rocket"></i> Sent Mail</a></li>
+                            <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+                            <li><a id="trash"><i class="fa fa-trash-o"></i> Trash</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="important"><i class="fa fa-bolt"></i> Important</a></li>
+                    <li><a id="userlist"><i class="fa fa-users"></i> User List</a></li>
+                    <!-- <li><a href="/theme"><i class="fa fa-picture-o"></i> Change Theme</a></li> -->
+                    <li><a class="submenu" href="#" title="Settings" id="down-menu-t"><i class="fa fa-envelope"></i><span> Settings </span></a>
+                        <ul id="dash-sub-t-t" style="display: none;">
+                            <li><a id="theme"><i class="fa fa-envelope"></i> Theme </a></li>
+                            <li><a href="#"><i class="fa fa-rocket"></i> Security </a></li>
+                            <!-- <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a href="/trash"><i class="fa fa-trash-o"></i> Trash</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/MainMenu-->
+
+            <div class="content-wrapper" id="inbox_back">
+                <!--Breadcrumb-->
+                <div class="breadcrumb clearfix">
+                    <ul>
+                        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+                        <!-- <li><a href="/home">Home</a></li> -->
+                        <li class="active">Dashboard</li>
+                    </ul>
+                </div>
+                <!--/Breadcrumb-->
+
+                <!--<div class="page-header">
+          <h1>Conversations<small>Advisors</small></h1>
+        </div>-->
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        <div class="powerwidget powerwidget-as-portlet powerwidget-as-portlet-white powerwidget-sortable" id="widget5" data-widget-editbutton="false" role="widget" style="">
+                            <!-- <header role="heading">
+                <h2>Portlet<small>With Carousel</small></h2>
+              <div class="powerwidget-ctrls" role="menu"> <a href="#" class="button-icon powerwidget-delete-btn"><i class="fa fa-times-circle"></i></a>  <a href="#" class="button-icon powerwidget-fullscreen-btn"><i class="fa fa-arrows-alt "></i></a> <a href="#" class="button-icon powerwidget-toggle-btn"><i class="fa fa-chevron-circle-up "></i></a></div><span class="powerwidget-loader"></span></header> -->
+                            <div class="inner-spacer nopadding" role="content">
+                                <div class="portlet-profile">
+                                    <div class="user-img"><img src="/images/user1.jpg" alt="User Picture" draggable="true" data-bukket-ext-bukket-draggable="true"></div>
+                                    <h1>MICAH YANCEY</h1>
+                                    Followers: 451 | Friends: 45 | Items: 22 </div>
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="item item4"> </div>
+                                        <div class="item item5 active left"></div>
+                                        <div class="item item6 next left"></div>
+                                    </div>
+                                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+                            </div>
+                        </div>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active" id="home" style="color: #555;">
+                                <div class="profile-header">About</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Age:</strong></td>
+                                            <td>789</td>
+                                            <td><strong>Affilation:</strong></td>
+                                            <td>Jedi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Email:</strong></td>
+                                            <td>yoda@skywalkers.com</td>
+                                            <td><strong>Midi-Chlorians:</strong></td>
+                                            <td>High</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Status:</strong></td>
+                                            <td>Forever Alone</td>
+                                            <td><strong>Height:</strong></td>
+                                            <td>0,66 Meters</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sex:</strong></td>
+                                            <td>Male</td>
+                                            <td><strong>Mass:</strong></td>
+                                            <td>17 Kg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Side:</strong></td>
+                                            <td>Dark Side</td>
+                                            <td><strong>Species:</strong></td>
+                                            <td>Unknown</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <div class="powerwidget col-grey" id="user-directory" data-widget-editbutton="false" style="background: transparent;">
+                            <header class="powerwidget dark-blue">
+                                <h2>Recent clients<small></small></h2>
+                            </header>
+                            <div class="inner-spacer" style="background: transparent;">
+                                <div id="items" class="items-switcher items-view-grid">
+                                    <!-- <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <input type="text" data-provide="typeahead" class="form-control" id="users" placeholder="Search">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                        </span> </div>
+                    </div>
+                    <div class="col-md-6 items-options"> <a href="#" class="items-icon items-grid items-selected" data-view="items-view-grid">Grid View</a> <a href="#" class="items-icon items-list" data-view="items-view-list">List View</a> </div>
+                  </div> -->
+                                    <ul>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="/profile"><img class="img-circle" src="/images/user4.jpg"></a>
+                                            <h3 class="items-title">Sandy Woodson</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user3.jpg"></a>
+                                            <h3 class="items-title">Beverly Woodard</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user2.jpg"></a>
+                                            <h3 class="items-title">Mark Parker</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user6.jpg"></a>
+                                            <h3 class="items-title">Laura Stephens</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user7.jpg"></a>
+                                            <h3 class="items-title">Dominic Braswell</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user8.jpg"></a>
+                                            <h3 class="items-title">Brenton Jasper</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user9.jpg"></a>
+                                            <h3 class="items-title">Kirk Mcgowan</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+                                        <li>
+                                            <!-- <div class="items-inner clearfix"> -->
+                                            <a class="items-image" href="#"><img class="img-circle" src="/images/user10.jpg"></a>
+                                            <h3 class="items-title">Terry Whitley</h3>
+                                            <!-- <span class="label label-danger">Banned</span> -->
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <!-- <ul class="pagination">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+
+                    </div>
+                    <div class="col-md-5">
+
+                    </div>
+                </div>
+                <!-- /Widgets Row End Grid-->
+            </div>
+            <!-- / Content Wrapper -->
+            <!--/MainWrapper-->
+
+        </div>
+        <!--/Smooth Scroll-->
+
+
+        <!-- scroll top -->
+        <div class="scroll-top-wrapper hidden-xs">
+            <i class="fa fa-angle-up"></i>
+        </div>
+        <!-- /scroll top -->
+
+
+
+        <!--Modals-->
+
+        <!--Power Widgets Modal-->
+        <div class="modal" id="delete-widget">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <i class="fa fa-lock"></i> </div>
+                    <div class="modal-body text-center">
+                        <p>Are you sure to delete this widget?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="trigger-deletewidget-reset">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="trigger-deletewidget">Delete</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+        <!--Sign Out Dialog Modal-->
+        <div class="modal" id="signout">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <i class="fa fa-lock"></i> </div>
+                    <div class="modal-body text-center">Are You Sure Want To Sign Out?</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="yesigo">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+        <!--Scripts-->
+        <!--JQuery-->
+        <script type="text/javascript" src="/give_help/js/vendors/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/give_help/js/vendors/jquery/jquery-ui.min.js"></script>
+
+        <!--Fullscreen-->
+        <script type="text/javascript" src="/give_help/js/vendors/fullscreen/screenfull.min.js"></script>
+
+        <!--NanoScroller-->
+        <script type="text/javascript" src="/give_help/js/vendors/nanoscroller/jquery.nanoscroller.min.js"></script>
+
+        <!--Sparkline-->
+        <script type="text/javascript" src="/give_help/js/vendors/sparkline/jquery.sparkline.min.js"></script>
+
+        <!--Horizontal Dropdown-->
+        <script type="text/javascript" src="/give_help/js/vendors/horisontal/cbpHorizontalSlideOutMenu.js"></script>
+        <script type="text/javascript" src="/give_help/js/vendors/classie/classie.js"></script>
+
+        <!--PowerWidgets-->
+        <script type="text/javascript" src="/give_help/js/vendors/powerwidgets/powerwidgets.min.js"></script>
+
+        <!--Bootstrap-->
+        <script type="text/javascript" src="/give_help/js/vendors/bootstrap/bootstrap.min.js"></script>
+
+        <!--ToDo-->
+        <script type="text/javascript" src="/give_help/js/vendors/todos/todos.js"></script>
+
+        <!--Main App-->
+        <script type="text/javascript" src="/give_help/js/scripts.js"></script>
+        <script type="text/javascript">
+            //   window.onload  = function () {
+
+            //     //for changing the url
+
+            //     var newUrl = "give_help";
+            //     window.location.assign = newUrl;
+            // };
+        </script>
+        <script type="text/javascript">
+            function logout() {
+                sessionStorage.clear();
+            };
+        </script>
+        <script type="text/javascript">
+            //if(sessionStorage.getItem("user") == ""){
+            var name = "<%= t1 %>";
+            //alert(name);
+            var csm = "<%= bg_color  %>";
+            var csa = "<%= active_color %>";
+            var csf = "<%= font_color %>";
+            var bi = "<%= bgi %>";
+            var bf = "<%= font_body %>";
+            var url_user = "<%= url_user %>";
+            var user_email = "<%= user_email %>";
+            sessionStorage.setItem("bg_color", csm);
+            sessionStorage.setItem("active_color", csa);
+            sessionStorage.setItem("font_color", csf);
+            sessionStorage.setItem("bgi", bi);
+            sessionStorage.setItem("user", name);
+            sessionStorage.setItem("body_font", bf);
+            sessionStorage.setItem("user_email", user_email);
+            sessionStorage.setItem("url_user", url_user);
+
+
+            //function processAjaxData(response, urlPath){
+            //document.getElementById("content").innerHTML = response.html;
+            //document.title = response.pageTitle;
+            if (sessionStorage.getItem("flage") == 1) {
+                //alert(sessionStorage.getItem("flage"));
+                window.history.pushState("", "", "chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/dashboard");
+                sessionStorage.setItem("flage", 2);
+                //alert(sessionStorage.getItem("flage"));
+            }
+            $('#dashboard').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/dashboard");
+            $('#conversation').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/conversation");
+            $('#trash').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/trash");
+            $('#important').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/important");
+            $('#userlist').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/userlist");
+            $('#theme').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/theme");
+            // window.onbeforeunload = function () {
+            //            return 'Are you sure you want to leave?';
+            //        };
+            //}
+            //alert(name);
+            //}
+            //alert(sessionStorage.getItem("user"));
+        </script>
+        <script type="text/javascript">
+            $(".tiny-user-block .user-img, .tiny-user-block h3").click(function() {
+                $(".tiny-user-block").removeClass("active");
+                $(".responsive-admin-menu").addClass("sidebar-toggle");
+                $(".content-wrapper").addClass("main-content-toggle-left");
+                $("#advisor-col").addClass("col-sm-4 col-md-4 col-lg-4");
+                $(this).closest("div.tiny-user-block").addClass("active");
+                $("#advisor-col").removeClass("col-sm-6 col-md-6 col-lg-6");
+                $("#chat-col").show(500);
+            });
+            $(".delete-msg").click(function() {
+                $(this).closest(".tiny-user-block").remove();
+            });
+        </script>
+        <script type="text/javascript">
+            $('#down-menu-t').on('click', function() {
+                $('#down-menu-t').toggleClass('downarrow');
+                $('#dash-sub-t-t').toggle();
+            });
+        </script>
+        <script type="text/javascript">
+            $('#down-menu').on('click', function() {
+                $('#down-menu').toggleClass('downarrow');
+                $('#dash-sub-f').toggle();
+            });
+        </script>
+        <script type="text/javascript">
+            window.onload = function() {
+                var img = sessionStorage.getItem("background_img");
+                if (img == "food") {
+                    $('#inbox_back').css("background", "url(/images/nirzar-pangarkar-28869.jpg)");
+                    $('#inbox_back').css("background-size", "contain");
+                } else if (img == "fin") {
+                    $('#inbox_back').css("background", "url(/images/helloquence-61189.jpg)");
+                    $('#inbox_back').css("background-size", "contain");
+                } else if (img == "fit") {
+                    $('#inbox_back').css("background", "url(/images/daniel-knoflicek-333882.jpg)");
+                    $('#inbox_back').css("background-size", "contain");
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            function addHexColor(c1, c2) {
+                var hexStr = (parseInt(c1, 16) + parseInt(c2, 16)).toString(16);
+                while (hexStr.length < 6) {
+                    hexStr = '0' + hexStr;
+                } // Zero pad.
+                return hexStr;
+            }
+        </script>
+        <script type="text/javascript">
+            //alert(sessionStorage.getItem('bg_color'));
+            var c = sessionStorage.getItem('bg_color');
+            var a = sessionStorage.getItem('active_color');
+            var d = c;
+            d = d.replace(/\#/g, '');
+            d = addHexColor(d, '111111');
+            //alert(d);
+            $('.wrapc').css('background-color', c);
+            $('body').css('background-color', c);
+            $('#dash-sub-f').css('background-color', '#' + d);
+            $('#dash-sub-t-t').css('background-color', '#' + d);
+            $('.act_c').css('background-color', a);
+            var e = sessionStorage.getItem('font_color');
+            $('.act_c').css('color', e);
+            var f = sessionStorage.getItem('bgi');
+            $('#inbox_back').css("background", "url(/" + f + ")");
+            $('#inbox_back').css("background-size", "contain");
+            $('.dark-blue').css('background-color', a);
+            var g = sessionStorage.getItem('body_font');
+            $('#inbox_back').css('color', g);
+        </script>
+        <!--/Scripts-->
+
+</body>
+
+</html>

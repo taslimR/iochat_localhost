@@ -1,0 +1,125 @@
+<!-- Select Basic -->
+                        <!-- <div class="form-group">
+                          <label class="col-md-2 control-label" for="selectbasic" style="margin-top: 20px">Give some tags</label>
+                          <div class="col-md-8"  style="margin: 10px 0px;">
+                            <select multiple id="tags" style="width: 100%">
+                              <option value="Finance">Finance</option>
+                              <option value="Food">Food</option>
+                              <option value="Fitness">Fitness</option>
+                              <option value="Nutrition">Nutrition</option>
+                              <option value="Sports">Sports</option>
+                              <option value="Nature">Nature</option>
+                            </select>
+                          </div>
+
+                        </div> -->
+                        
+                        <!-- Select Multiple -->
+                        <!-- <div class="form-group">
+                          <label class="col-md-2 control-label" for="selectmultiple" style="margin-top: 20px">Select background color</label>
+                          <div class="col-md-8"  <input name="Color Picker"  type="color" style="padding: 0"/>>
+                            <input name="Color Picker"  type="color" style="padding: 0"/>
+                            <input class="form-control jscolor" onchange="update(this.jscolor)" value="cc66ff" style="padding: 0;" >
+                            <p id="rect" style="border:1px solid gray; width:161px; height:100px;">
+                          </div>
+                        </div> -->
+
+
+                        <div class="form-group">
+                                <label class="col-md-2 control-label" for="selectbasic" style="margin-top: 20px">Give some tags</label>
+                                <div class="col-md-8"  style="margin: 10px 0px;">
+                                  <select multiple id="tags" style="width: 100%">
+                                    <option value="Finance">Finance</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Fitness" selected>Fitness</option>
+                                    <option value="Nutrition">Nutrition</option>
+                                    <option value="Sports" selected>Sports</option>
+                                    <option value="Nature">Nature</option>
+                                  </select>
+                                </div>
+
+                              </div>
+                            <div class="form-group">
+                              <label class="clo-md-2 control-label" style="margin-top: 20px;float: left;padding-left: 20px;">Select Theme</label>
+                              <div class="col-md-6" style="margin: 10px 0; float: left;text-align: left;     margin-left: 15px;">
+                                <!-- <label class="input">
+
+                                  <input type="radio" class="color_code" name="bgc" value="#03345e">
+                                  <input type="color"  value="#03345e" style="padding: 0; margin: 0">
+                                  <div style="background-color: #03345e; width: 40px; height: 40px;">
+                                    
+                                  </div>
+                                </label> -->
+
+                                <div class="form-check form-check-inline" style="float: left; padding: 10px;">
+                                  <label class="form-check-label">
+                                    <div id="div_content" style="background-color: #03345e; width: 40px; height: 40px;">
+                                    <input class="form-check-input" type="radio" name="bgc" value="#03345e" style="opacity: 0;">
+                                    
+                                    
+                                  </div>
+                                  </label>
+                                </div>
+                                <div  class="form-check form-check-inline" style="float: left; padding: 10px;">
+                                  <label class="form-check-label">
+                                    <div id="div_content1" style="background-color: #997d10; width: 40px; height: 40px;">
+                                    <input class="form-check-input" type="radio" name="bgc" value="#997d10" style="opacity: 0;">
+                                    
+                                    
+                                  </div>
+                                  </label>
+                                </div>
+                                
+                                <div class="form-check form-check-inline" style="float: left; padding: 10px;">
+                                  <label class="form-check-label">
+                                    <div id="div_content2" style="background-color: #494c4f; width: 40px; height: 40px;">
+                                    <input class="form-check-input" type="radio" name="bgc"  value="#494c4f" style="opacity: 0;">
+                                    
+                                    
+                                  </div>
+                                  </label>
+                                </div>
+                                
+                                <!-- <label>
+                                  <input type="radio" class="color_code" name="bgc" value="#997d10">
+                                  <input type="color"  value="#997d10" style="padding: 0">
+                                </label> -->
+                                <!-- <label>
+                                  <input type="radio" class="color_code" name="bgc" value="#494c4f">
+                                  <input type="color"  value="#494c4f" style="padding: 0">
+                                </label> -->
+                                <!-- <input type="checkbox"  value="#494c4f"> -->
+                              </div>
+                            </div>
+                            <script type="text/javascript">
+                              $('#div_content').on('click',function() { 
+                                  
+                                 if($(this).find('input[name="bgc"]').prop('checked') == true)
+                                 {
+                                  $(this).css('border','3px #ccc solid');
+                                  //alert('select');   
+                                 }
+                                
+                              });
+                              $('#div_content1').on('click',function() { 
+                                  
+                                 if($(this).find('input[name="bgc"]').prop('checked') == true)
+                                 {
+                                  $(this).css('border','3px #ccc solid');
+                                  //alert('select');   
+                                 }
+                                
+                              });
+                              $('#div_content2').on('click',function() { 
+                                  
+                                 if($(this).find('input[name="bgc"]').prop('checked') == true)
+                                 {
+                                  $(this).css('border','3px #ccc solid');
+                                  //alert('select');   
+                                 }
+                                
+                              });
+                              
+                            </script>
+
+                                float: right;padding-left: 20px;margin-top: -5px;

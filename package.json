@@ -1,0 +1,23 @@
+{
+  "name": "iochat",
+  "version": "1.0.0",
+  "description": "simple caht app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "taslimR",
+  "license": "ISC",
+  "dependencies": {
+
+    "body-parser": "*",
+    "socket.io": "*",
+    "express": "*",
+    "express-session": "*",
+    "mysql": "*",
+    "ejs": "*",
+    "multer": "*"
+  },
+  "devDependencies": {}
+}

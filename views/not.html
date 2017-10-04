@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<!-- <meta name="keywords" content="admin template, admin dashboard, inbox templte, calendar template, form validation">
+<meta name="author" content="DazeinCreative">
+<meta name="description" content="ORB - Powerfull and Massive Admin Dashboard Template with tonns of useful features"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat Hub</title>
+<link href="/give_help/css/styles.css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.jpg" />
+<script type="text/javascript" src="/give_help/js/vendors/modernizr/modernizr.custom.js"></script>
+<style type="text/css">
+  #full-user-1 table td.first{
+    width: 100px;
+    font-weight: bold;
+}
+
+#full-user-1 img{
+    width: 260px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+.txt{
+  text-align: left;
+}
+#menuLogin:hover {
+    background: #969fa1;
+  }
+  #menuLogin:hover > #profile_view{
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<!--Smooth Scroll-->
+<div class="smooth-overflow wrapc">
+    <!--Navigation-->
+  
+  <nav class="navbar navbar-inverse wrapc" role="navigation">
+    <div class="container-fluid"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand text-blue" href="/home" style="padding:0;"><img style="max-width:100%;" src="/images/scotia-logo.png" alt=""></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" id="menuLogin"> <a class="dropdown" href="#"  id="navLogin">Micah Yancey <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            <div class="dropdown-menu" id="profile_view" style="padding: 10px 20px; width: 200px;">
+              <center>
+                <div class="main-info-menu">
+                    <div class="user-img"><img src="/images/user1.jpg" alt="User Picture" /></div>
+                    <!-- <h1>Micah Yancey </h1> -->
+                    <p>Advisor</p>
+                    <a class="btn btn-primary" href="/adv_profile">Profile</a>
+                </div>
+                
+                <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+              </center>  
+            </div>
+          </li>
+        </ul>
+        <!--/Sign In Form--> 
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container-fluid --> 
+  </nav>
+  
+  <!--/Navigation-->
+    
+    <!--/Navigation--> 
+    
+    <!--MainWrapper-->
+    <div class="main-wrap wrapc"> 
+      
+      
+      <!--Main Menu-->
+      <div class="responsive-admin-menu">
+        <div class="responsive-menu">Scotia Bank Advice Hub
+          <div class="menuicon"><i class="fa fa-angle-down"></i></div>
+        </div>
+        <ul id="menu">
+          <li><a  href="/dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+          <!-- <li><a class="active" href="/give_help"><i class="fa fa-envelope"></i> Inbox</a></li> -->
+
+          <li><a  class="submenu" href="#" title="Inbox" id="down-menu"><i class="fa fa-envelope"></i><span> Inbox </span></a>
+            <ul id="dash-sub-f" style="display: none;">
+              <li><a href="/inbox"><i class="fa fa-envelope"></i> Conversations</a></li>
+              <li><a href="#"><i class="fa fa-rocket"></i> Sent Mail</a></li>
+              <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a href="/trash"><i class="fa fa-trash-o"></i> Trash</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/important"><i class="fa fa-bolt"></i> Important</a></li>
+          <li><a href="/user_list"><i class="fa fa-users"></i> User List</a></li>
+          <!-- <li><a href="/theme"><i class="fa fa-picture-o"></i> Change Theme</a></li> -->
+          <li><a class=" act_c submenu downarrow" href="#" title="Dashboard" id="down-menu-f"><i class="fa fa-user"></i><span> Sandy Woodson </span></a>
+          <ul id="dash-sub-f-f" style="display: block;">
+            <li><a  href="/goal"><i class="fa fa-rocket"></i> Goals</a></li>
+            <li><a href="/goal_builder"><i class="fa fa-rocket"></i> Goal Builder</a></li>
+            <li><a  href="/dream"><i class="fa fa-barcode"></i>Dream</a></li>
+          <li><a href="/task"><i class="fa fa-check-square-o"></i> Tasks + Priorities</a></li>
+            <li><a href="/working"><i class="fa fa-check-square-o"></i> What's Working</a></li>
+            <li><a  class=" act_c"  href="/not"><i class="fa fa-check-square-o"></i> What's Not</a></li>
+            <li><a href="/coaching"><i class="fa fa-check-square-o"></i> Coaching Approach</a></li>
+          </ul>
+        </li>
+        <li><a  class="submenu" href="#" title="Inbox" id="down-menu-t"><i class="fa fa-envelope"></i><span> Settings </span></a>
+            <ul id="dash-sub-t-t" style="display: none;">
+              <li><a href="/theme"><i class="fa fa-envelope"></i> Theme </a></li>
+              <li><a href="/theme"><i class="fa fa-rocket"></i> Security </a></li>
+              <!-- <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a href="/trash"><i class="fa fa-trash-o"></i> Trash</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/MainMenu-->
+      
+      <div class="content-wrapper" id="inbox_back"> 
+        <!--Breadcrumb-->
+        <div class="breadcrumb clearfix">
+          <ul>
+            <li><a href="/home"><i class="fa fa-home"></i></a></li>
+            <li><a href="profile.html">Client's profile</a></li>
+            <li class="active">What's not</li>
+          </ul>
+        </div>
+        <!--/Breadcrumb-->
+        
+        <!--<div class="page-header">
+          <h1>Conversations<small>Advisors</small></h1>
+        </div>-->
+        
+        
+        
+        <div class="page-header">
+          <h1>What's not</h1>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12"> 
+        <table class="table">
+                  <thead>
+                    <tr>
+                      <th colspan="5" class="text-center">In general this is a problem for me :</th>
+                    </tr>
+                    <tr>
+                      <th width="200">Obstacle</th>
+                      <th>Rarely</th>
+                      <th class="text-center">Sometimes</th>
+                      <th class="text-right">A lot</th>
+                      <th width="200">OPTIONAL this obstacle
+is a real problem
+on these goals</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Emotions</td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Curiosity</td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Stress </td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Indecision </td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Distractions </td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Time management </td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Conflict</td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Worry</td>
+                        <td colspan="3"><input type="text" class="ionrange_7" /></td>
+                        <td>
+                          <select data-row_id="342" data-field_type="dropdown_1" class="form-control" name="emotions">
+                      <option value="Select">---Select---</option>
+                                <option 1="" value="63">morning walk</option>                 
+                                <option selected="selected" value="75">Eat salad with dinner</option>                 
+                                <option 1="" value="76">Do a Cancer 5 K Walk</option>                 
+                                <option 1="" value="77">Spend time with my Parents</option>                 
+                                <option 1="" value="113">test </option>                 
+                            </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+
+          </div>
+            
+            
+        </div>
+      <!-- /Widgets Row End Grid--> 
+    </div>
+    <!-- / Content Wrapper --> 
+  <!--/MainWrapper--> 
+  
+</div>
+<!--/Smooth Scroll--> 
+
+
+<!-- scroll top -->
+<div class="scroll-top-wrapper hidden-xs">
+    <i class="fa fa-angle-up"></i>
+</div>
+<!-- /scroll top -->
+
+
+
+<!--Modals-->
+
+<!--Power Widgets Modal-->
+<div class="modal" id="delete-widget">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">
+        <p>Are you sure to delete this widget?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="trigger-deletewidget-reset">Cancel</button>
+        <button type="button" class="btn btn-primary" id="trigger-deletewidget">Delete</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+<!--Sign Out Dialog Modal-->
+<div class="modal" id="signout">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">Are You Sure Want To Sign Out?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="yesigo">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+
+<!--Scripts--> 
+<!--JQuery--> 
+<script type="text/javascript" src="/give_help/js/vendors/jquery/jquery.min.js"></script> 
+<script type="text/javascript" src="/give_help/js/vendors/jquery/jquery-ui.min.js"></script> 
+
+<!--Fullscreen--> 
+<script type="text/javascript" src="/give_help/js/vendors/fullscreen/screenfull.min.js"></script> 
+
+<!--NanoScroller--> 
+<script type="text/javascript" src="/give_help/js/vendors/nanoscroller/jquery.nanoscroller.min.js"></script> 
+
+<!--Sparkline--> 
+<script type="text/javascript" src="/give_help/js/vendors/sparkline/jquery.sparkline.min.js"></script> 
+
+<!--Horizontal Dropdown--> 
+<script type="text/javascript" src="/give_help/js/vendors/horisontal/cbpHorizontalSlideOutMenu.js"></script> 
+<script type="text/javascript" src="/give_help/js/vendors/classie/classie.js"></script> 
+
+<!--PowerWidgets--> 
+<script type="text/javascript" src="/give_help/js/vendors/powerwidgets/powerwidgets.min.js"></script> 
+
+<!--Bootstrap--> 
+<script type="text/javascript" src="/give_help/js/vendors/bootstrap/bootstrap.min.js"></script> 
+
+<!--ToDo--> 
+<script type="text/javascript" src="/give_help/js/vendors/todos/todos.js"></script> 
+
+<!--iOnRangeSlider--> 
+<script type="text/javascript" src="/give_help/js/vendors/ionrangeslider/ion.rangeSlider.min.js"></script> 
+<!--Main App--> 
+<script type="text/javascript" src="/give_help/js/scripts.js"></script>
+
+<script type="text/javascript">
+  
+    // $(".tiny-user-block").removeClass("active");
+    //$(".responsive-admin-menu").addClass("sidebar-toggle");
+    // $(".content-wrapper").addClass("main-content-toggle-left");
+    // $(".advisor-info").hide();
+    // $("#advisor-col").addClass("col-sm-4 col-md-4 col-lg-4");
+    //$(this).addClass("active");
+    // $("#advisor-col").removeClass("col-sm-6 col-md-6 col-lg-6");
+    //$("#chat-col").show(500);
+    $('#down-menu').on('click',function(){
+      $('#down-menu').toggleClass('downarrow');
+      $('#dash-sub-f').toggle();
+    });
+  
+</script>
+<script type="text/javascript">
+  $('#down-menu-f').on('click',function(){
+      $('#down-menu-f').toggleClass('downarrow');
+      $('#dash-sub-f-f').toggle();
+    });
+</script>
+<script type="text/javascript">
+  $('#down-menu-t').on('click',function(){
+    $('#down-menu-t').toggleClass('downarrow');
+      $('#dash-sub-t-t').toggle();
+    });
+</script>
+<script type="text/javascript">
+  window.onload = function(){
+    var img = sessionStorage.getItem("background_img");
+    if(img == "food"){
+      $('#inbox_back').css("background", "url(/images/nirzar-pangarkar-28869.jpg)"); 
+    $('#inbox_back').css("background-size","contain");
+    }
+    else if(img == "fin"){
+      $('#inbox_back').css("background", "url(/images/helloquence-61189.jpg)"); 
+      $('#inbox_back').css("background-size","contain");
+    }
+    else if(img == "fit"){
+      $('#inbox_back').css("background", "url(/images/daniel-knoflicek-333882.jpg)"); 
+      $('#inbox_back').css("background-size","contain");
+    }
+  }
+</script>
+<script type="text/javascript">
+  function addHexColor(c1, c2) {
+  var hexStr = (parseInt(c1, 16) + parseInt(c2, 16)).toString(16);
+  while (hexStr.length < 6) { hexStr = '0' + hexStr; } // Zero pad.
+  return hexStr;
+}
+</script>
+<script type="text/javascript">
+  //alert(sessionStorage.getItem('bg_color'));
+  var c = sessionStorage.getItem('bg_color');
+  var a = sessionStorage.getItem('active_color');
+  var d = c;
+  d = d.replace(/\#/g,'');
+  d = addHexColor(d,'111111');
+  //alert(d);
+  $('.wrapc').css('background-color', c);
+  $('body').css('background-color', c);
+  $('#dash-sub-f-f').css('background-color', '#'+d);
+  $('#dash-sub-f').css('background-color', '#'+d);
+  $('#dash-sub-t-t').css('background-color', '#' + d);
+  $('.act_c').css('background-color', a);
+  var e = sessionStorage.getItem('font_color');
+  $('.act_c').css('color', e);
+  var f = sessionStorage.getItem('bgi');
+  $('#inbox_back').css("background","url(/"+f+")");
+  $('#inbox_back').css("background-size","contain");
+  $('.dark-blue').css('background-color',a);
+</script>
+
+<!--/Scripts-->
+
+</body>
+</html>

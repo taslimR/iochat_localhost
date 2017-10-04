@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat Hub</title>
+    <link href="/give_help/css/styles.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.jpg" />
+    <script type="text/javascript" src="/give_help/js/vendors/modernizr/modernizr.custom.js"></script>
+    <style type="text/css">
+        #menuLogin:hover {
+            background: #969fa1;
+        }
+
+        #menuLogin:hover>#profile_view {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        //alert("aldsdsd");
+        var temp = 0;
+    var img = 0;
+    </script>
+</head>
+
+<body>
+
+    <!--Smooth Scroll-->
+    <div class="smooth-overflow wrapc">
+        <!--Navigation-->
+
+        <nav class="navbar navbar-inverse wrapc" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand text-blue" href="/home" style="padding:0;"><img style="max-width:100%;" src="/images/scotia-logo.png" alt=""></a> </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="menuLogin"> <a class="dropdown" href="#" id="navLogin">Micah Yancey <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <div class="dropdown-menu" id="profile_view" style="padding: 10px 20px; width: 200px;">
+                                <center>
+                                    <div class="main-info-menu">
+                                        <div class="user-img"><img src="/images/user1.jpg" alt="User Picture" /></div>
+                                        <!-- <h1>Micah Yancey </h1> -->
+                                        <p>Advisor</p>
+                                        <a class="btn btn-primary" href="/adv_profile">Profile</a>
+                                    </div>
+
+                                    <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                                    <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                                </center>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--/Sign In Form-->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!--/Navigation-->
+
+        <!--/Navigation-->
+
+        <!--MainWrapper-->
+        <div class="main-wrap wrapc">
+
+
+            <!--Main Menu-->
+            <div class="responsive-admin-menu">
+                <div class="responsive-menu">Scotia Bank Advice Hub
+                    <div class="menuicon"><i class="fa fa-angle-down"></i></div>
+                </div>
+                <ul id="menu">
+                    <li><a id="dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                    <!-- <li><a class="active" href="/give_help"><i class="fa fa-envelope"></i> Inbox</a></li> -->
+
+                    <li><a class="submenu" href="#" title="Inbox" id="down-menu-f"><i class="fa fa-envelope"></i><span> Inbox </span></a>
+                        <ul id="dash-sub-f-f" style="display: none;">
+                            <li><a id="conversation"><i class="fa fa-envelope"></i> Conversations</a></li>
+                            <li><a href="#"><i class="fa fa-rocket"></i> Sent Mail</a></li>
+                            <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+                            <li><a id="trash"><i class="fa fa-trash-o"></i> Trash</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="important"><i class="fa fa-bolt"></i> Important</a></li>
+                    <li><a id="userlist"><i class="fa fa-users"></i> User List</a></li>
+                    <!-- <li><a class="act_c" href="/theme"><i class="fa fa-picture-o"></i> Change Theme</a></li> -->
+                    <li><a class="submenu downarrow" href="#" title="Settings" id="down-menu-t"><i class="fa fa-cogs"></i><span> Settings </span></a>
+                        <ul id="dash-sub-t-t" style="display: block;">
+                            <li><a class="act_c" id="theme"><i class="fa fa-adjust"></i> Theme</a></li>
+                            <li><a href="#"><i class="fa fa-lock"></i> Security </a></li>
+                            <!-- <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a href="/trash"><i class="fa fa-trash-o"></i> Trash</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/MainMenu-->
+
+            <div class="content-wrapper" id="back">
+                <!--Breadcrumb-->
+                <div class="breadcrumb clearfix">
+                    <ul>
+                        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+                        <!-- <li><a href="/home">Dashboard</a></li> -->
+                        <li class="active">Theme</li>
+                    </ul>
+                </div>
+                <!--/Breadcrumb-->
+
+                <!-- color table -->
+            <form class="orb-form" action="/set_changes"  method="post">
+                <button class="btn btn-primary pull-right save_btn" style="display: none;" >Save changes</button>
+
+                <input type="hidden" name="color_scheme_menu" id="color_scheme_menu">
+                <input type="hidden" name="color_scheme_active" id="color_scheme_active">
+                <input type="hidden" name="color_scheme_font" id="color_scheme_font">
+                <input type="hidden" name="color_body_font" id="color_body_font">
+                <input type="hidden" name="email" id="user_email">
+                <table class="form-table" style="float: right;">
+                    <tbody>
+                        <tr class="user-admin-color-wrap">
+                            <th scope="row" style="width: 150px;"><h3>Color Scheme</h3></th>
+                            <td>
+                                <fieldset id="color-picker" class="scheme-list">
+
+                                    <input type="hidden" id="color-nonce" name="color-nonce" value="524f989f48">
+                                    <div class="color-option selected" style="width: 200px;float: left;margin: 10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_fresh" type="radio" value="#333333" class="tog" checked="checked" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#f0f0ed">
+                                            <input type="hidden" name="admin_f_color" value="#222">
+                                            <!-- <input type="hidden" class="css_url" value="" > -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#82878c&quot;,&quot;focus&quot;:&quot;#00a0d2&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_fresh" style="float: left;">Default</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #080808">&nbsp;</td>
+                                                        <td style="background-color: #33383d">&nbsp;</td>
+                                                        <td style="background-color: #3b8dbd">&nbsp;</td>
+                                                        <td style="background-color: #f0f0ed">&nbsp;</td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_fresh" type="radio" value="#333333" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#0073aa">
+                                            <input type="hidden" name="admin_f_color" value="#fff">
+                                            <!-- <input type="hidden" class="css_url" value="" > -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#82878c&quot;,&quot;focus&quot;:&quot;#00a0d2&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_fresh" style="float: left;">Fresh</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #222">&nbsp;</td>
+                                                        <td style="background-color: #333">&nbsp;</td>
+                                                        <td style="background-color: #0073aa">&nbsp;</td>
+                                                        <td style="background-color: #00a0d2">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_light" type="radio" value="#999999" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#e5e5e5">
+                                            <input type="hidden" name="admin_f_color" value="#000">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/light/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#999&quot;,&quot;focus&quot;:&quot;#ccc&quot;,&quot;current&quot;:&quot;#ccc&quot;}}">
+                                            <label for="admin_color_light" style="float: left;">Light</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #e5e5e5">&nbsp;</td>
+                                                        <td style="background-color: #999">&nbsp;</td>
+                                                        <td style="background-color: #d64e07">&nbsp;</td>
+                                                        <td style="background-color: #04a4cc">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_blue" type="radio" value="#4796b3" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#096484">
+                                            <input type="hidden" name="admin_f_color" value="#fff">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/blue/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#e5f8ff&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_blue" style="float: left;">Blue</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #096484">&nbsp;</td>
+                                                        <td style="background-color: #4796b3">&nbsp;</td>
+                                                        <td style="background-color: #52accc">&nbsp;</td>
+                                                        <td style="background-color: #74B6CE">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_coffee" type="radio" value="#59524c" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#c7a589">
+                                            <input type="hidden" name="admin_f_color" value="#000">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/coffee/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#f3f2f1&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_coffee" style="float: left;">Coffee</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #46403c">&nbsp;</td>
+                                                        <td style="background-color: #59524c">&nbsp;</td>
+                                                        <td style="background-color: #c7a589">&nbsp;</td>
+                                                        <td style="background-color: #9ea476">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_ectoplasm" type="radio" value="#523f6d" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#a3b745">
+                                            <input type="hidden" name="admin_f_color" value="#000">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/ectoplasm/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#ece6f6&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_ectoplasm" style="float: left;">Ectoplasm</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #413256">&nbsp;</td>
+                                                        <td style="background-color: #523f6d">&nbsp;</td>
+                                                        <td style="background-color: #a3b745">&nbsp;</td>
+                                                        <td style="background-color: #d46f15">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_midnight" type="radio" value="#363b3f" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#e14d43">
+                                            <input type="hidden" name="admin_f_color" value="#fff">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/midnight/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#f1f2f3&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_midnight" style="float: left;">Midnight</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #25282b">&nbsp;</td>
+                                                        <td style="background-color: #363b3f">&nbsp;</td>
+                                                        <td style="background-color: #69a8bb">&nbsp;</td>
+                                                        <td style="background-color: #e14d43">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px;float: left;padding:15px 50px">
+                                            <input name="admin_color" id="admin_color_ocean" type="radio" value="#738e96" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#9ebaa0">
+                                            <input type="hidden" name="admin_f_color" value="#000">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/ocean/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#f2fcff&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_ocean" style="float: left;">Ocean</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #627c83">&nbsp;</td>
+                                                        <td style="background-color: #738e96">&nbsp;</td>
+                                                        <td style="background-color: #9ebaa0">&nbsp;</td>
+                                                        <td style="background-color: #aa9d88">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 200px; float: left;padding:15px 50px;">
+                                            <input name="admin_color" id="admin_color_sunrise" type="radio" value="#cf4944" class="tog" style="float: left;">
+                                            <input type="hidden" name="admin_active_color" value="#dd823b">
+                                            <input type="hidden" name="admin_f_color" value="#fff">
+                                            <!-- <input type="hidden" class="css_url" value="http://lordier.fr/wp-admin/css/colors/sunrise/colors.min.css"> -->
+                                            <input type="hidden" class="icon_colors" value="{&quot;icons&quot;:{&quot;base&quot;:&quot;#f3f1f1&quot;,&quot;focus&quot;:&quot;#fff&quot;,&quot;current&quot;:&quot;#fff&quot;}}">
+                                            <label for="admin_color_sunrise" style="float: left;">Sunrise</label>
+                                            <table class="color-palette" style="width: 200px;height: 40px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color: #b43c38">&nbsp;</td>
+                                                        <td style="background-color: #cf4944">&nbsp;</td>
+                                                        <td style="background-color: #dd823b">&nbsp;</td>
+                                                        <td style="background-color: #ccaf0b">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <input type="hidden" name="background_image" id="background_image">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput" style="margin-top:    10px"><h3>Background Image</h3></label>
+                                <div class="col-md-8">
+                                  <div id="items" class="items-switcher items-view-grid" style="margin-left: 50px">
+                                  <ul id="imgpicker">
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;" checked><img  class="img-circle" title="none" src="images/gallery/0.png"><input type="hidden" name="" value="#555"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img  class="img-circle" src="images/gallery/1.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img  class="img-circle" src="images/gallery/2.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/3.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/4.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/5.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/6.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/7.png"><input type="hidden" name="" value="#fff"></a></li>
+                                    <li style="padding: 5px 5px;"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img class="img-circle" src="images/gallery/8.png"><input type="hidden" name="" value="#555"></a></li>
+
+                                    <li style="padding: 5px 5px; display: none;" id="show"><a class="items-image" href="#"><input type="radio" name="bgi" style="float: left;"><img id="show_img" class="img-circle" src=""><input type="hidden" name="" value="#555"></a></li>
+                                    
+
+                                  </ul>
+                                </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="body_font_hide" id="bdf">
+                                    <div class="form-group" id="setfont" style="margin-top:10px; display: none ">
+                                <label class="col-md-4 control-label"  style="padding: 0;margin-top: 25px;"><h3>Set Font color</h3></label>
+                                    <div class="col-md-8" style="padding: 0;margin-top: 10px;">
+                                        <div class="color-option selected" style="width: 200px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 100px; float: left;">
+                                            <input name="body_font"  type="radio" value="#555" class="tog" style="float: left;">
+                                        <table>
+                                            <tr>
+                                                <td style="background: #555; width: 100px;height: 40px; " ></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="color-option selected" style="width: 100px;float: left;margin:10px 50px">
+                                        <div class="color-option " style="width: 100px; float: left;">
+                                            <input name="body_font"  type="radio" value="#fff" class="tog" style="float: left;">
+                                        <table>
+                                            <tr>
+                                                <td style="background: #fff; width: 100px;height: 40px; " ></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+                   <!-- <button class="btn btn-primary pull-right save_btn" style="display: none;" type="submit">Set changes</button>-->
+                  </form> 
+                  <form class="orb-form" action="/upload_img" id="frmUploader" enctype="multipart/form-data"  method="post">
+                            <div class="form-group" style="margin-top:    20px">
+                                <label class="col-md-2 control-label" for="textinput" ><h4>Upload Image (optional)</h4></label>
+                                <div class="col-md-8">
+
+                                    <label for="file" class="input input-file">
+                                      <div class="button" style="margin: 0; padding: 0 calc;">
+                                        <input type="file" id="file" name="userFile" multiple>
+                                        Browse</div>
+                                      <input type="text" readonly style="color: #555;">
+                                    </label>
+
+                                
+                                </div>
+                                </div>
+
+                            <input type="hidden" name="test" value="#fff">
+                            
+                    <button class="btn btn-primary pull-right upload_btn" style="display: none;" type="submit">Upload Image</button>
+                   </form>
+            </div>
+            <!-- /Widgets Row End Grid-->
+        </div>
+        <!-- / Content Wrapper -->
+        <!--/MainWrapper-->
+
+    </div>
+    <!--/Smooth Scroll-->
+
+
+    <!-- scroll top -->
+    <div class="scroll-top-wrapper hidden-xs">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <!-- /scroll top -->
+
+
+
+    <!--Modals-->
+
+    <!--Power Widgets Modal-->
+    <div class="modal" id="delete-widget">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <i class="fa fa-lock"></i> </div>
+                <div class="modal-body text-center">
+                    <p>Are you sure to delete this widget?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="trigger-deletewidget-reset">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="trigger-deletewidget">Delete</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!--Sign Out Dialog Modal-->
+    <div class="modal" id="signout">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <i class="fa fa-lock"></i> </div>
+                <div class="modal-body text-center">Are You Sure Want To Sign Out?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="yesigo">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <!--Scripts-->
+    <!--JQuery-->
+    <script type="text/javascript" src="/give_help/js/vendors/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/give_help/js/vendors/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/give_help/js/vendors/forms/jquery.form.min.js"></script>
+    <!--Fullscreen-->
+    <script type="text/javascript" src="/give_help/js/vendors/fullscreen/screenfull.min.js"></script>
+
+    <!--NanoScroller-->
+    <script type="text/javascript" src="/give_help/js/vendors/nanoscroller/jquery.nanoscroller.min.js"></script>
+
+    <!--Sparkline-->
+    <script type="text/javascript" src="/give_help/js/vendors/sparkline/jquery.sparkline.min.js"></script>
+
+    <!--Horizontal Dropdown-->
+    <script type="text/javascript" src="/give_help/js/vendors/horisontal/cbpHorizontalSlideOutMenu.js"></script>
+    <script type="text/javascript" src="/give_help/js/vendors/classie/classie.js"></script>
+
+    <!--PowerWidgets-->
+    <script type="text/javascript" src="/give_help/js/vendors/powerwidgets/powerwidgets.min.js"></script>
+
+    <!--Bootstrap-->
+    <script type="text/javascript" src="/give_help/js/vendors/bootstrap/bootstrap.min.js"></script>
+
+    <!--ToDo-->
+    <script type="text/javascript" src="/give_help/js/vendors/todos/todos.js"></script>
+
+    <!--Main App-->
+    <script type="text/javascript" src="/give_help/js/scripts.js"></script>
+    <script type="text/javascript">
+  //if(sessionStorage.getItem("user") == ""){
+    var name = "<%= t1 %>";
+    //alert(name);
+    var csm =  "<%= bg_color  %>";
+  var csa =  "<%= active_color %>";
+  var csf = "<%= font_color %>";
+  var bi =  "<%= bgi %>";
+  var bf =  "<%= font_body %>";
+  var user_email = "<%= user_email %>";
+  sessionStorage.setItem("bg_color", csm);
+  sessionStorage.setItem("active_color", csa);
+  sessionStorage.setItem("font_color", csf);
+  sessionStorage.setItem("bgi", bi);
+    sessionStorage.setItem("user", name);
+    sessionStorage.setItem("body_font", bf);
+  sessionStorage.setItem("user_email", user_email);
+  // if(sessionStorage.getItem('theme') == 1){
+  //      window.history.pushState("","","chathub.whyalog.org/"+sessionStorage.getItem("url_user")+"/theme");
+  //      sessionStorage.setItem('theme', 2);
+  // }
+  $('#dashboard').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/dashboard");
+            $('#conversation').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/conversation");
+            $('#trash').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/trash");
+            $('#important').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/important");
+            $('#userlist').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/userlist");
+            $('#theme').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/theme");
+
+    //alert(name);
+  //}
+  //alert(sessionStorage.getItem("user"));
+</script>
+    <script>
+        
+            $('input[type="file"]').change(function() {
+                $('.upload_btn').css('display','block');
+                // $('#setfont').css('display','block');
+                $(this).parent().next().val($(this).val());
+            });
+    </script>
+    <script type="text/javascript">
+
+            // $('#color_scheme_menu').val($("input[name='admin_color']:checked").val());
+            // $('#color_scheme_active').val($("input[name='admin_color']:checked").next().val());
+            // $('#color_scheme_font').val($("input[name='admin_color']:checked").next().next().val());
+            // $('#background_image').val($("input[name='bgi']:checked").next().attr('src'));
+
+            // $('#url').val('chathub.whyalog.org/'+ $('#url_user').val());
+            $("input[name='admin_color']").click(function(){
+                temp = 1;
+                $('.save_btn').css('display','block');
+                sessionStorage.setItem("temp_bg_color", $("input[name='admin_color']:checked").val());
+                sessionStorage.setItem("temp_active_color", $("input[name='admin_color']:checked").next().val());
+                sessionStorage.setItem("temp_font_color", $("input[name='admin_color']:checked").next().next().val());
+                //sessionStorage.setItem("temp_bgi", $("input[name='bgi']:checked").next().attr('src'));
+              changeOnChange_bg();
+            });
+            //sessionStorage.setItem("bg_color", $("input[name='admin_color']:checked").val());
+            //sessionStorage.setItem("active_color", $("input[name='admin_color']:checked").next().val());
+            //sessionStorage.setItem("font_color", $("input[name='admin_color']:checked").next().next().val());
+            $("input[name='bgi']").click(function(){
+                img = 1;
+                $('.save_btn').css('display','block');
+                // sessionStorage.setItem("temp_bg_color", $("input[name='admin_color']:checked").val());
+                // sessionStorage.setItem("temp_active_color", $("input[name='admin_color']:checked").next().val());
+                // sessionStorage.setItem("temp_font_color", $("input[name='admin_color']:checked").next().next().val());
+              sessionStorage.setItem("temp_bgi", $("input[name='bgi']:checked").next().attr('src'));
+              sessionStorage.setItem("temp_bg_font", $("input[name='bgi']:checked").next().next().val());
+              changeOnChange_bgi();
+            });
+
+            $("input[name='body_font']").click(function(){
+                $('#bdf').val($("input[name='body_font']:checked").val());
+            });
+            //sessionStorage.setItem("bgi", $("input[name='bgi']:checked").next().attr('src'));
+
+
+        $(".tiny-user-block .user-img, .tiny-user-block h3").click(function() {
+            $(".tiny-user-block").removeClass("active");
+            $(".responsive-admin-menu").addClass("sidebar-toggle");
+            $(".content-wrapper").addClass("main-content-toggle-left");
+            $("#advisor-col").addClass("col-sm-4 col-md-4 col-lg-4");
+            $(this).closest("div.tiny-user-block").addClass("active");
+            $("#advisor-col").removeClass("col-sm-6 col-md-6 col-lg-6");
+            $("#chat-col").show(500);
+        });
+        $(".delete-msg").click(function() {
+            $(this).closest(".tiny-user-block").remove();
+        });
+    </script>
+    
+    
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var img = sessionStorage.getItem("background_img");
+            if (img == "food") {
+                $('#back').css("background", "url(/images/nirzar-pangarkar-28869.jpg)");
+                $('#back').css("background-size", "contain");
+            } else if (img == "fin") {
+                $('#back').css("background", "url(/images/helloquence-61189.jpg)");
+                $('#back').css("background-size", "contain");
+            } else if (img == "fit") {
+                $('#back').css("background", "url(/images/daniel-knoflicek-333882.jpg)");
+                $('#back').css("background-size", "contain");
+            }
+
+        }
+    </script>
+    <script type="text/javascript">
+        $('#down-menu-f').on('click', function() {
+            $('#down-menu-f').toggleClass('downarrow');
+            $('#dash-sub-f-f').toggle();
+        });
+    </script>
+    <script type="text/javascript">
+        $('#down-menu-t').on('click', function() {
+            $('#down-menu-t').toggleClass('downarrow');
+            $('#dash-sub-t-t').toggle();
+        });
+    </script>
+    <script type="text/javascript">
+        function addHexColor(c1, c2) {
+            var hexStr = (parseInt(c1, 16) + parseInt(c2, 16)).toString(16);
+            while (hexStr.length < 6) {
+                hexStr = '0' + hexStr;
+            } // Zero pad.
+            return hexStr;
+        }
+    </script>
+    <script type="text/javascript">
+        //alert(sessionStorage.getItem('bg_color'));
+        var c = sessionStorage.getItem('bg_color');
+        var d = c;
+        d = d.replace(/\#/g, '');
+        d = addHexColor(d, '111111');
+        //alert(d);
+        $('.wrapc').css('background-color', c);
+        $('body').css('background-color', c);
+        $('#dash-sub-f-f').css('background-color', '#' + d);
+    </script>
+    <script type="text/javascript">
+        function addHexColor(c1, c2) {
+            var hexStr = (parseInt(c1, 16) + parseInt(c2, 16)).toString(16);
+            while (hexStr.length < 6) {
+                hexStr = '0' + hexStr;
+            } // Zero pad.
+            return hexStr;
+        }
+    </script>
+    <script type="text/javascript">
+        //alert(sessionStorage.getItem('bg_color'));
+        var c = sessionStorage.getItem('bg_color');
+        var a = sessionStorage.getItem('active_color');
+        var d = c;
+        d = d.replace(/\#/g, '');
+        d = addHexColor(d, '111111');
+        //alert(d);
+        $('.wrapc').css('background-color', c);
+        $('body').css('background-color', c);
+        $('#dash-sub-f-f').css('background-color', '#' + d);
+        $('#dash-sub-t-t').css('background-color', '#' + d);
+        $('.act_c').css('background-color', a);
+        var e = sessionStorage.getItem('font_color');
+        $('.act_c').css('color', e);
+        var f = sessionStorage.getItem('bgi');
+        $('#back').css("background", "url(/" + f + ")");
+        $('#back').css("background-size", "contain");
+        $('.dark-blue').css('background-color', a);
+        var  g = sessionStorage.getItem('body_font');
+        $('#back').css('color', g);
+    </script>
+    <!--/Scripts-->
+    <script type="text/javascript">
+      function changeOnChange_bg(){
+        var c = sessionStorage.getItem('temp_bg_color');
+        var a = sessionStorage.getItem('temp_active_color');
+        var d = c;
+        d = d.replace(/\#/g, '');
+        d = addHexColor(d, '111111');
+        //alert(d);
+        $('.wrapc').css('background-color', c);
+        $('body').css('background-color', c);
+        $('#dash-sub-f-f').css('background-color', '#' + d);
+        $('#dash-sub-t-t').css('background-color', '#' + d);
+        $('.act_c').css('background-color', a);
+        var e = sessionStorage.getItem('temp_font_color');
+        $('.act_c').css('color', e);
+        var f = sessionStorage.getItem('temp_bgi');
+        // $('#back').css("background", "url(/" + f + ")");
+        // $('#back').css("background-size", "contain");
+        $('.dark-blue').css('background-color', a);
+        
+      }
+      function changeOnChange_bgi(){
+        // var c = sessionStorage.getItem('temp_bg_color');
+        // var a = sessionStorage.getItem('temp_active_color');
+        // var d = c;
+        // d = d.replace(/\#/g, '');
+        // d = addHexColor(d, '111111');
+        // //alert(d);
+        // $('.wrapc').css('background-color', c);
+        // $('body').css('background-color', c);
+        // $('#dash-sub-f-f').css('background-color', '#' + d);
+        // $('#dash-sub-t-t').css('background-color', '#' + d);
+        // $('.act_c').css('background-color', a);
+        // var e = sessionStorage.getItem('temp_font_color');
+        // $('.act_c').css('color', e);
+        var f = sessionStorage.getItem('temp_bgi');
+        $('#back').css("background", "url(/" + f + ")");
+        $('#back').css("background-size", "contain");
+
+        var  g = sessionStorage.getItem('temp_bg_font');
+        $('#back').css('color', g);
+        // $('.dark-blue').css('background-color', a);
+      }
+    </script>
+    <script type="text/javascript">
+    
+   $(".save_btn").on('click', function(){
+       
+        if(temp == 1){
+            
+            $('#color_scheme_menu').val(sessionStorage.getItem('temp_bg_color'));
+            $('#color_scheme_active').val(sessionStorage.getItem('temp_active_color'));
+            $('#color_scheme_font').val(sessionStorage.getItem('temp_font_color'));
+            
+            $('#color_body_font').val(sessionStorage.getItem('temp_bg_font'));
+        }
+        else {
+            //alert('vcvfd');
+            $('#color_scheme_menu').val(sessionStorage.getItem('bg_color'));
+            $('#color_scheme_active').val(sessionStorage.getItem('active_color'));
+            $('#color_scheme_font').val(sessionStorage.getItem('font_color'));
+            
+            $('#color_body_font').val(sessionStorage.getItem('body_font'));
+        }
+
+
+        if(img == 1){
+            $('#background_image').val(sessionStorage.getItem('temp_bgi'));
+        }
+        else{
+            $('#background_image').val(sessionStorage.getItem('bgi'));
+        }
+            
+            $('#user_email').val(sessionStorage.getItem('user_email'));
+   });
+        
+</script>
+<!-- <script type="text/javascript">
+    if(sessionStorage.getItem('bgi').indexOf('userFile-') >= 0){
+        $('#show').css('display','block');
+        $('#show_img').attr('src',sessionStorage.getItem('bgi'));
+
+            var rgb = getAverageRGB(document.getElementById('show_img'));
+            document.getElementById('back').style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
+
+        function getAverageRGB(imgEl) {
+            
+            var blockSize = 5, // only visit every 5 pixels
+                defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+                canvas = document.createElement('canvas'),
+                context = canvas.getContext && canvas.getContext('2d'),
+                data, width, height,
+                i = -4,
+                length,
+                rgb = {r:0,g:0,b:0},
+                count = 0;
+                
+            if (!context) {
+                return defaultRGB;
+            }
+            
+            height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+            width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+            
+            context.drawImage(imgEl, 0, 0);
+            
+            try {
+                data = context.getImageData(0, 0, width, height);
+            } catch(e) {
+                /* security error, img on diff domain */
+                //alert('x');
+                return defaultRGB;
+            }
+            
+            length = data.data.length;
+            
+            while ( (i += blockSize * 4) < length ) {
+                ++count;
+                rgb.r += data.data[i];
+                rgb.g += data.data[i+1];
+                rgb.b += data.data[i+2];
+            }
+            
+            // ~~ used to floor values
+            rgb.r = ~~(rgb.r/count);
+            rgb.g = ~~(rgb.g/count);
+            rgb.b = ~~(rgb.b/count);
+            
+            return rgb;
+            
+        }
+
+    }
+</script> -->
+</body>
+
+</html>

@@ -1,0 +1,735 @@
+﻿<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<!-- <meta name="keywords" content="admin template, admin dashboard, inbox templte, calendar template, form validation"> -->
+<!-- <meta name="author" content="DazeinCreative"> -->
+<!-- <meta name="description" content="ORB - Powerfull and Massive Admin Dashboard Template with tonns of useful features"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat Hub</title>
+<link href="/give_help/css/styles.css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.jpg" />
+<script type="text/javascript" src="/give_help/js/vendors/modernizr/modernizr.custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <style type="text/css">
+      .rich_msg input{
+        /*opacity: 0;*/
+      }
+      .rich_msg_input .btn{
+        /*padding: 5px 10px;*/
+        margin-top: 25px;
+        margin-left: 10px;
+      }
+      #menuLogin:hover {
+    background: #969fa1;
+  }
+  #menuLogin:hover > #profile_view{
+    display: block;
+  }
+    </style>
+</head>
+
+<body id="body">
+
+<!--Smooth Scroll-->
+<div class="smooth-overflow wrapc" >
+    <!--Navigation-->
+  
+  <nav class="navbar navbar-inverse wrapc" role="navigation" >
+    <div class="container-fluid"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand text-blue" href="/home" style="padding:0;"><img style="max-width:100%;" src="/images/scotia-logo.png" alt=""></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" id="menuLogin"> <a class="dropdown" href="#"  id="navLogin">Micah Yancey <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            <div class="dropdown-menu" id="profile_view" style="padding: 10px 20px; width: 200px;">
+              <center>
+                <div class="main-info-menu">
+                    <div class="user-img"><img src="/images/user1.jpg" alt="User Picture" /></div>
+                    <!-- <h1>Micah Yancey </h1> -->
+                    <p>Advisor</p>
+                    <a class="btn btn-primary" href="/adv_profile">Profile</a>
+                </div>
+                
+                <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+                <!-- <p> fnevjnelf efne gerog ergeev  </p> -->
+              </center>  
+            </div>
+          </li>
+        </ul>
+        <!--/Sign In Form--> 
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container-fluid --> 
+  </nav>
+  
+  <!--/Navigation-->
+    
+    <!--/Navigation--> 
+    
+    <!--MainWrapper-->
+    <div class="main-wrap wrapc"> 
+      
+      
+      <!--Main Menu-->
+      <div class="responsive-admin-menu">
+        <div class="responsive-menu">Scotia Bank Advice Hub
+          <div class="menuicon"><i class="fa fa-angle-down"></i></div>
+        </div>
+        <ul id="menu">
+          <li><a  id="dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+          <!-- <li><a class="active" href="/give_help"><i class="fa fa-envelope"></i> Inbox</a></li> -->
+
+          <li><a  class="submenu downarrow" href="#" title="Inbox" id="down-menu"><i class="fa fa-envelope"></i><span> Inbox </span></a>
+            <ul id="dash-sub-f" style="display: block;">
+              <li><a class="act_c" id="conversation"><i class="fa fa-envelope"></i> Conversations</a></li>
+              <li><a href="#"><i class="fa fa-rocket"></i> Sent Mail</a></li>
+              <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a id="trash"><i class="fa fa-trash-o"></i> Trash</a></li>
+            </ul>
+          </li>
+
+          <li><a  id="important"><i class="fa fa-bolt"></i> Important</a></li>
+          <li><a id="userlist"><i class="fa fa-users"></i> User List</a></li>
+          <!-- <li><a href="/theme"><i class="fa fa-picture-o"></i> Change Theme</a></li> -->
+          <li><a  class="submenu" href="#" title="Inbox" id="down-menu-t"><i class="fa fa-envelope"></i><span> Settings </span></a>
+            <ul id="dash-sub-t-t" style="display: none;">
+              <li><a id="theme"><i class="fa fa-envelope"></i> Theme </a></li>
+              <li><a href="#"><i class="fa fa-rocket"></i> Security </a></li>
+              <!-- <li><a href="#"><i class="fa fa-exchange"></i> Draft</a></li>
+              <li><a href="/trash"><i class="fa fa-trash-o"></i> Trash</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/MainMenu-->
+      
+      <div class="content-wrapper" id="inbox_back"> 
+        <!--Breadcrumb-->
+        <div class="breadcrumb clearfix">
+          <ul>
+            <li><a href="/home"><i class="fa fa-home"></i></a></li>
+            <li><a href="#">Inbox</a></li>
+            <li class="active">Conversation</li>
+          </ul>
+        </div>
+        <!--/Breadcrumb-->
+        
+        <!--<div class="page-header">
+          <h1>Conversations<small>Advisors</small></h1>
+        </div>-->
+        
+        <div class="row">
+        	
+            <div id="advisor-col" class="col-sm-6 col-md-6 col-lg-6">
+                <div class="powerwidget dark-blue" style="margin-bottom:0;">
+                    <header role="heading">
+                      <h2>Clients</h2>
+                    </header>
+                </div>
+                <div class="advisor-block" style="margin-top:0;">
+                
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user4.jpg" alt="User"/> <span class="badge msg-count">5</span></div>
+                        <h3>Sandy Woodson<small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user3.jpg" alt="User"/> </div>
+                        <h3>Beverly Woodard<small class="pull-right sm-nobefore"> <span class="btn btn-warning status-btn"></span> 02:30 pm</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user2.jpg" alt="User"/> <span class="badge msg-count">3</span></div>
+                        <h3>Mark Parker <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user6.jpg" alt="User"/> </div>
+                        <h3>Laura Stephens <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user7.jpg" alt="User"/> <span class="badge msg-count">5</span></div>
+                        <h3>Dominic Braswell<small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user8.jpg" alt="User"/> </div>
+                        <h3>Brenton Jasper <small class="pull-right sm-nobefore"> <span class="btn btn-warning status-btn"></span> 02:30 pm</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user9.jpg" alt="User"/> <span class="badge msg-count">3</span></div>
+                        <h3>Kirk Mcgowan <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="/images/user10.jpg" alt="User"/> </div>
+                        <h3>Terry Whitley<small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+            <div style="display:none;" class="chat-col col-sm-6 col-md-6 col-lg-6">
+                <div class="advisor-block">
+                
+                    <!-- New widget -->
+                    <div class="inner-spacer">
+                      <div class="chat-container">
+                        <div class="top-buttons clearfix" style="padding-left:10px;">
+                          <h2 class="margin-0px pull-left">Chat</h2>
+                          <span class="badge">25</span>
+                          <div class="btn-group btn-group-sm pull-right"> <a id="close-chat" class="btn btn-default"><i class="fa fa-thumbs-down"></i> <span class="hidden-xs">Leave</span></a> <a class="btn btn-default"><i class="fa fa-times-circle"></i> <span class="hidden-xs">Clear</span></a></div>
+                        </div>
+                        
+                        <div class="chat-container">
+                          <div class="chat-pusher">
+                            <div class="chat-content"><!-- this is the wrapper for the content -->
+                              <div class="nano"><!-- this is the nanoscroller -->
+                                <div class="nano-content">
+                                  <div class="chat-content-inner"><!-- extra div for emulating position:fixed of the menu --> 
+                                    
+                                    <!-- Top Navigation -->
+                                    
+                                    <div class="clearfix">
+                                                                <div class="chat-messages" id="chatAdh">
+                                                                    <ul id="chatAd" style="overflow-y: auto; ">
+                                                                    <!-- <div > -->
+                                                                        <!-- <li class="left clearfix">
+                                                                            <div class="user-img pull-left"> <img src="/images/client.jpg" alt="User Avatar" /> </div>
+                                                                            <div class="chat-body clearfix">
+                                                                                <div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                                                                <p>Hi</p>
+                                                                            </div>
+                                                                        </li> -->
+
+
+                                                                        <!-- <li class="right clearfix"><span class="user-img pull-right"> <img src="/images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"><span class="name">Camilla Mele</span><small class="badge"><i class="fa fa-clock-o"></i>15 mins ago</small></div>
+                                              <p>Nunc ipsum dui, tempus id sagittis eu?</p>
+                                              <img src="/images/tangy-free-psd-button-set.jpg" alt="">
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="left clearfix"><span class="user-img pull-left"> <img src="/images/client.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <img src="/images/ans.png" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="left clearfix">
+                                            <div class="user-img pull-left"> <img src="/images/client.jpg" alt="User Avatar" /> </div>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor nulla vitae interdum fermentum. Ut in vulputate neque. Praesent luctus lacus a dolor tempus pellentesque. Cras sit amet urna eu augue suscipit eleifend. Mauris mollis pharetra faucibus. Phasellus eu massa quam. Nunc id metus placerat neque feugiat commodo. </p>
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="right clearfix"><span class="user-img pull-right"> <img src="/images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="right clearfix"><span class="user-img pull-right"> <img src="/images/favicon.jpg" alt="User Avatar" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <img src="/images/link.jpg" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li> -->
+
+                                                                        <!-- <li class="left clearfix"><span class="user-img pull-left"> <img src="/images/client.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span> </div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="right clearfix"><span class="user-img pull-right"> <img src="/images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li> -->
+                                                                        <!-- <li class="right clearfix"><span class="user-img pull-right"> <img src="/images/favicon.jpg" alt="User Avatar" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <img src="/images/link2.jpg" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li> -->                  
+                                                                         <!-- </div> -->
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                  
+                                  <!-- /chat-content-inner --> 
+                                </div>
+                              </div>
+                              
+                              <!-- /nano --> 
+                              
+                            </div>
+                            
+                            <!-- /chat-content --> 
+                          </div>
+                          <!-- /chat-pusher --> 
+                        </div>
+                      </div>
+                      <!-- /chat-container--> 
+                      
+                      <!--Chat-form -->
+                      <form id=massageFormAd>
+                                <div class="chat-message-form">
+                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <textarea placeholder="Write Your Message Here" class="form-control margin-bottom" id="massageAd" rows="2"></textarea>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8">
+                                            <div class="btn-group">
+                                                <button class=" btn btn-default"><i class="fa fa-location-arrow"></i></button>
+                                                <button class=" btn btn-default"><i class="fa fa-camera"></i></button>
+                                                <button class=" btn btn-default"><i class="fa fa-music"></i></button>
+                                                <button class=" btn btn-default"><i class="fa fa-file"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                             <input type="submit" class = "btn btn-info pull-right" value = "Send"/>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                </form>
+                      
+                      <!-- /Chat-form --> 
+                      
+                    </div>
+                    <!-- End Widget --> 
+                    
+                </div>
+            </div>
+            <div  style="display:none;" class="chat-col col-sm-2 col-md-2 col-lg-2"> 
+            
+            <!-- New widget -->
+            <div class="powerwidget dark-blue" data-widget-editbutton="false">
+              <header>
+                <h2>Conversation Obj</h2>
+              </header>
+              <div class="inner-spacer advisor-block" style="margin-top:0;"">
+                <div class="chat-container">
+
+                  <div class="dd nestable2">
+                  <form id="rich_massageAd">
+                      <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="What is your choice?" >
+                        </li>
+
+                      </ol>
+                  </form>
+                  <form id="rich_massageAdd_1">
+                    <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="For further information" >
+                        </li>
+                    </ol>
+                  </form>
+                  <form id="rich_massageAdd_2a">
+                    <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="Select an option" >
+                        </li>
+                    </ol>
+                  </form>
+                  <form id="rich_massageAdd_3a">
+                    <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="What is your choice?" >
+                        </li>
+                    </ol>
+                  </form>
+                  <form id="rich_massageAdd_4a">
+                    <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="For further information" >
+                        </li>
+                    </ol>
+                  </form>
+                  <form id="rich_massageAdd_5a">
+                    <ol class="dd-list mobj">
+                        <li class="dd-item" >
+                          <input  class="dd-handle" type="submit" value="Select an option" >
+                        </li>
+                    </ol>
+                  </form>
+                      
+                  </div>
+                  
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Object 1</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            Option one is this and that&mdash;be sure to include why it's great
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            Option two can be something else and selecting it will deselect option one
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" >
+                            Option three is disabled
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="modal-footer" >
+                      
+                        <button type="submit" class="btn btn-info close"  data-dismiss="modal" aria-label="Close">Start Chat</button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!-- </form> -->
+                </div>
+                
+                </div>
+                
+                
+              </div>
+            </div>
+            <!-- End Widget --> 
+            
+          </div>
+        </div>
+        
+      </div>
+      <!-- /Widgets Row End Grid--> 
+    </div>
+    <!-- / Content Wrapper --> 
+  <!--/MainWrapper--> 
+  
+</div>
+<!--/Smooth Scroll--> 
+
+
+<!-- scroll top -->
+<div class="scroll-top-wrapper hidden-xs">
+    <i class="fa fa-angle-up"></i>
+</div>
+<!-- /scroll top -->
+
+
+
+<!--Modals-->
+
+<!--Power Widgets Modal-->
+<div class="modal" id="delete-widget">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">
+        <p>Are you sure to delete this widget?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="trigger-deletewidget-reset">Cancel</button>
+        <button type="button" class="btn btn-primary" id="trigger-deletewidget">Delete</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+<!--Sign Out Dialog Modal-->
+<div class="modal" id="signout">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">Are You Sure Want To Sign Out?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="yesigo">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+
+<!--Scripts--> 
+<!--JQuery--> 
+
+<script type="text/javascript" src="/js/vendors/jquery/jquery.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/jquery/jquery-ui.min.js"></script> 
+
+<!--Fullscreen--> 
+<script type="text/javascript" src="/js/vendors/fullscreen/screenfull.min.js"></script> 
+
+<!--NanoScroller--> 
+<script type="text/javascript" src="/js/vendors/nanoscroller/jquery.nanoscroller.min.js"></script> 
+
+<!--Sparkline--> 
+<script type="text/javascript" src="/js/vendors/sparkline/jquery.sparkline.min.js"></script> 
+
+<!--Horizontal Dropdown--> 
+<script type="text/javascript" src="/js/vendors/horisontal/cbpHorizontalSlideOutMenu.js"></script> 
+<script type="text/javascript" src="/js/vendors/classie/classie.js"></script> 
+
+<!--PowerWidgets--> 
+<script type="text/javascript" src="/js/vendors/powerwidgets/powerwidgets.min.js"></script> 
+
+<!--Bootstrap--> 
+<script type="text/javascript" src="/js/vendors/bootstrap/bootstrap.min.js"></script> 
+
+<!--ToDo--> 
+<script type="text/javascript" src="/js/vendors/todos/todos.js"></script> 
+
+<!--Main App--> 
+<script type="text/javascript" src="/js/scripts.js"></script>
+
+<script type="text/javascript">
+	$(".advisor-block .tiny-user-block").click(function(){
+		$(".tiny-user-block").removeClass("active");
+		$(".responsive-admin-menu").addClass("sidebar-toggle");
+		$(".content-wrapper").addClass("main-content-toggle-left");
+		$("#advisor-col").addClass("col-sm-4 col-md-4 col-lg-4");
+		$(this).addClass("active");
+		$("#advisor-col").removeClass("col-sm-6 col-md-6 col-lg-6");
+		$(".chat-col").show(500);
+	});
+
+      // if(sessionStorage.getItem('conversation') == 1){
+      //  window.history.pushState("","","chathub.whyalog.org/"+sessionStorage.getItem("url_user")+"/conversation");
+      //  sessionStorage.setItem('conversation', 2);
+      // }
+
+      $('#dashboard').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/dashboard");
+            $('#conversation').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/conversation");
+            $('#trash').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/trash");
+            $('#important').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/important");
+            $('#userlist').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/userlist");
+            $('#theme').attr('href',"/chathub.whyalog.org/" + sessionStorage.getItem("url_user") + "/theme");
+
+</script>
+<script>
+    $(function() {
+      ///console.log('hello Ad');
+      //alert('hello');
+        var socket = io.connect();
+
+        //var $messageForm = $('#massageForm');
+        //var $message = $('#massage');
+        var $messageVal = '<div class="rich_msg_input"><input class="btn btn-primary btn-sm rich_msg_1"  value="Canada" type="submit"> <input  class="btn btn-primary btn-sm rich_msg_2"  value="USA" type="submit"><input class="btn btn-primary btn-sm rich_msg_3"  value="Asia" type="submit"></div>';
+        
+        var $messageVal_1 = '<div style="margin-top: 25px;"><a class="_5rw4" target="_blank" href="http://www.scotiabank.com/gls/en//home#about"><div class="_49or _310t clearfix" direction="left"><div class="_ohe lfloat"><div class="_4hsl"><div class="_4yp6"><div class="_52kr" style="width: 72px; height: 72px;"><div class="_4yp9" style="background-image: url(&quot;https://external-frt3-2.xx.fbcdn.net/safe_image.php?d=AQATBP5GyZtreHpq&amp;w=960&amp;h=960&amp;url=http%3A%2F%2Fwww.scotiabank.com%2Fgfx%2Ftop-bar-logo.gif&amp;_nc_hash=AQAB4qiXPVKhsbXG&quot;); width: 400px; height: 72px;"></div></div></div></div></div><div class=""><div class="_42ef"><div style="display: flex; justify-content: center; flex-direction: column; height: 72px;"><div class="__6j"><div class="__6k">Scotiabank Global Site</div><div class="__6l">Scotiabank Global: Learn more about our personal, commercial, corporate and investment banking products and services.</div><div class="__6m">scotiabank.com</div></div></div></div></div></div></a></div> ';
+
+        var $messageVal_2 = '<div style="margin-top: 25px;"><a class="_5rw4" target="_blank" href="https://www.vfsglobal.ca/canada/india/contact_us.html"><div class="_49or _310t clearfix" direction="left"><div class="_ohe lfloat"><div class="_4hsl"><div class="_4yp6"><div class="_52kr" style="width: 72px; height: 250px;"><div class="_4yp9" style="background-image: url(&quot;https://external-frt3-2.xx.fbcdn.net/safe_image.php?d=AQAYvv5NshdH1xRw&amp;w=960&amp;h=960&amp;url=https%3A%2F%2Fwww.vfsglobal.ca%2Fcanada%2Findia%2F/images%2Fmap%2Fnew_delhi_091215.png&amp;_nc_hash=AQDyOH9j1S1mf-df&quot;); width: 400px; height: 250px;"></div></div></div></div></div><div class=""><div class="_42ef"><div style="display: flex; justify-content: center; flex-direction: column; height: 72px;"><div class="__6j"><div class="__6k">www.vfsglobal.ca</div><div class="__6m">vfsglobal.ca</div></div></div></div></div></div></a></div>';
+        //var $chat = $('#chat');
+        var $messageFormAd = $('#massageFormAd');
+        var $messageAd = $('#massageAd');
+        var $rich_messageAd = $('#rich_massageAd');
+        var $rich_messageAdd_1 = $('#rich_massageAdd_1');
+        var $rich_messageAdd_2 = $('#rich_massageAdd_2a');
+        var $rich_messageAdd_3 = $('#rich_massageAdd_3a');
+        var $rich_messageAdd_4 = $('#rich_massageAdd_4a');
+        var $rich_messageAdd_5 = $('#rich_massageAdd_5a');
+        
+
+        var $chatAd = $('#chatAd');
+        
+
+        // $(".btn_test").on("click", function(){ 
+        //    alert("test");
+        // });
+
+	$messageFormAd.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message', $messageAd.val(),'Ad');
+            $messageAd.val('');
+        
+        });
+
+        $rich_messageAd.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal,'obj_Ad');
+            
+        });
+
+        $rich_messageAdd_1.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal_1,'Ad');
+            
+        });
+
+        $rich_messageAdd_2.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal_2,'Ad');
+            
+
+        });
+
+
+        $rich_messageAdd_3.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal,'obj_Ad');
+            
+        });
+
+        $rich_messageAdd_4.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal_1,'Ad');
+            
+        });
+
+        $rich_messageAdd_5.submit(function(e) {
+            e.preventDefault();
+            socket.emit('send message',$messageVal_2,'Ad');
+            
+        });
+
+        socket.on('new message', function(data,data2) {
+
+          //socket.on('new message from',function(data2){
+            if(data.user == 'client'){
+              console.log('msg from : client');
+              // $chat.append('<li class="right clearfix"><span class="user-img pull-right"> <img src/images/client.jpg" alt="User Avatar" /> </span><div class="chat-body clearfix"><div class="header"> <span class="name">Anton Durant</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div><p>'+data.msg+'</p></div></li>');
+            $chatAd.append('<li class="left clearfix"><a href="profile.html"><div class="user-img pull-left"> <img src/images/user4.jpg" alt="User Avatar" /> </div></a><div class="chat-body clearfix"><div class="header"><a href="profile.html"> <span class="name">Sandy Woodson</span></a><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div><p >'+data.msg+'</p></div></li>');
+
+               // $('#chat').scrollTop($('#chat')[0].scrollHeight);
+               
+              
+              //     $('#chatAd').scrollTop($('#chatAd')[0].scrollHeight);
+              // $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
+            }
+            else if(data.user == 'Ad')
+            {
+              console.log('msg from : Ad');
+              $chatAd.append('<li class="right clearfix"><span class="user-img pull-right"> <img src/images/user1.jpg" alt="User Avatar" /> </span><div class="chat-body clearfix"><div class="header"> <span class="name pull-right">Micah Yancey</span><span class=" badge pull-left"><i class="fa fa-clock-o"></i>13 mins ago</span> </div><div><br><p class="pull-right" >'+data.msg+'</p></div></div></li>');
+            // $chat.append('<li class="left clearfix"><div class="user-img pull-left"> <img src/images/MikeC.jpg" alt="User Avatar" /> </div><div class="chat-body clearfix"><div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div><p>'+data.msg+'</p></div></li>');
+              // $('#chat').scrollTop($('#chat')[0].scrollHeight);
+               
+              
+                  // $('#chatAd').scrollTop($('#chatAd')[0].scrollHeight);
+                  // $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
+            }
+            else if(data.user == 'obj_Ad')
+            {
+              console.log('msg from : Ad');
+              $chatAd.append('<li class="right clearfix"><span class="user-img pull-right"> <img src/images/user1.jpg" alt="User Avatar" /> </span><div class="chat-body clearfix"><div class="header"> <span class="name pull-right">Micah Yancey</span><span class=" badge pull-left"><i class="fa fa-clock-o"></i>13 mins ago</span> </div><div><br><p class="pull-right" >'+data.msg+'</p></div></div></li>');
+
+            }
+          //});
+          
+            // $chat.append('<li class="right clearfix"><span class="user-img pull-right"> <img src="/images/MikeC.jpg" alt="User Avatar" /> </span><div class="chat-body clearfix"><div class="header"> <span class="name">Anton Durant</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div><p>'+data.msg+'</p></div></li>');
+            // $chatAd.append('<li class="left clearfix"><div class="user-img pull-left"> <img src="/images/MikeC.jpg" alt="User Avatar" /> </div><div class="chat-body clearfix"><div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div><p>'+data.msg+'</p></div></li>');
+          
+            
+        });
+
+        
+    });
+  
+     //$('#chat').scrollTop($('#chat')[0].scrollHeight);
+    
+</script>
+<script type="text/javascript">
+  window.onload = function(){
+    var img = sessionStorage.getItem("background_img");
+    if(img == "food"){
+      $('#inbox_back').css("background", "url(/images/nirzar-pangarkar-28869.jpg)"); 
+    $('#inbox_back').css("background-size","contain");
+    }
+    else if(img == "fin"){
+      $('#inbox_back').css("background", "url(/images/helloquence-61189.jpg)"); 
+      $('#inbox_back').css("background-size","contain");
+    }
+    else if(img == "fit"){
+      $('#inbox_back').css("background", "url(/images/daniel-knoflicek-333882.jpg)"); 
+      $('#inbox_back').css("background-size","contain");
+    }
+  }
+</script>
+<script type="text/javascript">
+  $('#down-menu-f').on('click',function(){
+      $('#down-menu-f').toggleClass('downarrow');
+      $('#dash-sub-f-f').toggle();
+    });
+</script>
+<script type="text/javascript">
+  $('#down-menu-t').on('click',function(){
+    $('#down-menu-t').toggleClass('downarrow');
+      $('#dash-sub-t-t').toggle();
+    });
+</script>
+<script type="text/javascript">
+  $('#down-menu').on('click',function(){
+      $('#down-menu').toggleClass('downarrow');
+      $('#dash-sub-f').toggle();
+    });
+</script>
+<script type="text/javascript">
+  function addHexColor(c1, c2) {
+  var hexStr = (parseInt(c1, 16) + parseInt(c2, 16)).toString(16);
+  while (hexStr.length < 6) { hexStr = '0' + hexStr; } // Zero pad.
+  return hexStr;
+}
+</script>
+<script type="text/javascript">
+  //alert(sessionStorage.getItem('bg_color'));
+  var c = sessionStorage.getItem('bg_color');
+  var a = sessionStorage.getItem('active_color');
+  
+  //alert(e);
+  var d = c;
+  d = d.replace(/\#/g,'');
+  d = addHexColor(d,'111111');
+  //alert(d);
+  $('.wrapc').css('background-color', c);
+  $('body').css('background-color', c);
+  $('.act_c').css('background-color', a)
+  $('#dash-sub-f-f').css('background-color', '#'+d);
+  $('#dash-sub-t-t').css('background-color', '#' + d);
+  $('.act_c').css('background-color', a);
+  var e = sessionStorage.getItem('font_color');
+  $('.act_c').css('color', e);
+  var f = sessionStorage.getItem('bgi');
+  $('#inbox_back').css("background","url(/"+f+")");
+  $('#inbox_back').css("background-size","contain");
+  $('.dark-blue').css('background-color',a);
+</script>
+
+<!--/Scripts-->
+
+</body>
+</html>
